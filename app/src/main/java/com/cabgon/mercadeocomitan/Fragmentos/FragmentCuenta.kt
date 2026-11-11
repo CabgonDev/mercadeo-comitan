@@ -67,6 +67,10 @@ class FragmentCuenta : Fragment() {
             startActivity(Intent(mContext, EditarPerfil::class.java))
         }
 
+        binding.BtnCategoriasFavoritas.setOnClickListener {
+            startActivity(Intent(mContext, com.cabgon.mercadeocomitan.CategoriasFavoritasActivity::class.java))
+        }
+
         binding.BtnCambiarPass.setOnClickListener {
             startActivity(Intent(mContext, CambiarPasword::class.java))
         }
