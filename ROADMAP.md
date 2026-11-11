@@ -2,11 +2,11 @@
 
 **Versión Actual:** 3.0.6  
 **Última Actualización:** 2024-11-10  
-**Progreso General:** 9/19 completadas (47%)
+**Progreso General:** 10/19 completadas (53%)
 
 ---
 
-## ✅ Completadas (9/19)
+## ✅ Completadas (10/19)
 
 ### 1. ✅ ImageUtils - Compresión de Imágenes
 - **Fecha:** 2024-11-10
@@ -65,6 +65,23 @@
   - Helper con funciones: logEvent, logError, setUserInfo
   - Integración en CrearAnuncio y FragmentInicio
 
+### 10. ✅ Notificaciones Push Mejoradas
+- **Fecha:** 2024-11-10
+- **Impacto:** Mayor engagement, notificaciones organizadas por tipo
+- **Archivos:**
+  - `utils/NotificationHelper.kt`
+  - `MainApplication.kt`
+  - `Notificaciones/MyFcmService.kt`
+- **Features:**
+  - 4 canales de notificación (Chat, Anuncios, Sistema, Marketing)
+  - Soporte para 6 tipos de notificación
+  - Deep links específicos por tipo
+  - Notificaciones de nuevos anuncios en categorías favoritas
+  - Recordatorios de anuncios sin respuesta
+  - Actualizaciones de favoritos
+  - IDs únicos para evitar duplicados
+  - Integración con Crashlytics
+
 ---
 
 ## 🔄 En Progreso (0/19)
@@ -75,7 +92,7 @@ _Ninguna en progreso actualmente_
 
 ## 📋 Próximas (Alta Prioridad)
 
-### 10. 🎯 Room Database para Modo Offline
+### 11. 🎯 Room Database para Modo Offline
 - **Estimación:** 1-2 semanas
 - **Prioridad:** Alta
 - **Beneficios:**
@@ -88,37 +105,37 @@ _Ninguna en progreso actualmente_
 
 ## ⏳ Pendientes (Media/Baja Prioridad)
 
-### 11. ⏳ Migración Gradual a MVVM
+### 12. ⏳ Migración Gradual a MVVM
 - **Estimación:** 3-4 semanas
 - **Prioridad:** Media
 - **Beneficios:** Código más mantenible, separación de responsabilidades
 
-### 12. ⏳ Pull-to-Refresh
+### 13. ⏳ Pull-to-Refresh
 - **Estimación:** 2-3 días
 - **Prioridad:** Media
 - **Beneficios:** UX mejorada, actualización manual de datos
 
-### 13. ⏳ Skeleton Screens Completos
+### 14. ⏳ Skeleton Screens Completos
 - **Estimación:** 1 semana
 - **Prioridad:** Media
 - **Beneficios:** Percepción de velocidad, mejor UX
 
-### 14. ⏳ Tests Automatizados
+### 15. ⏳ Tests Automatizados
 - **Estimación:** 2-3 semanas
 - **Prioridad:** Media
 - **Beneficios:** Mayor confiabilidad, menos bugs en producción
 
-### 15. ⏳ CI/CD Pipeline
+### 16. ⏳ CI/CD Pipeline
 - **Estimación:** 1 semana
 - **Prioridad:** Baja
 - **Beneficios:** Builds automáticos, testing continuo
 
-### 16. ⏳ Analytics Avanzados
+### 17. ⏳ Analytics Avanzados
 - **Estimación:** 3 días
 - **Prioridad:** Media
 - **Beneficios:** Métricas de uso, embudo de conversión
 
-### 17. ⏳ Búsqueda Mejorada
+### 18. ⏳ Búsqueda Mejorada
 - **Estimación:** 1 semana
 - **Prioridad:** Media
 - **Beneficios:** Búsqueda por múltiples campos, filtros avanzados
@@ -149,9 +166,8 @@ _Ninguna en progreso actualmente_
 
 ## 🎯 Objetivos 2024
 
-- ✅ 8/19 mejoras base completadas (42%)
-- 🎯 Llegar a 50% antes de fin de año (10/19)
-- 🎯 Implementar Crashlytics (Q4 2024)
+- ✅ 10/19 mejoras base completadas (53%)
+- 🎯 Llegar a 60% antes de fin de año (11/19)
 - 🎯 Implementar Room Database (Q4 2024)
 
 ---
@@ -165,5 +181,5 @@ _Ninguna en progreso actualmente_
 
 ---
 
-**Última mejora:** Firebase Crashlytics (#9)  
-**Próxima mejora planeada:** Room Database (#10)
+**Última mejora:** Notificaciones Push Mejoradas (#10)  
+**Próxima mejora planeada:** Room Database (#11)

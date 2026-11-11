@@ -2,76 +2,150 @@
 
 package com.cabgon.mercadeocomitan.Notificaciones
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Intent
-import android.os.Build
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import com.cabgon.mercadeocomitan.Chat.ChatActivity
-import com.cabgon.mercadeocomitan.R
+import com.cabgon.mercadeocomitan.utils.NotificationHelper
+import com.cabgon.mercadeocomitan.utils.CrashlyticsHelper
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import java.util.Random
 
 class MyFcmService : FirebaseMessagingService() {
 
     @Suppress("DEPRECATION", "OVERRIDE_DEPRECATION")
     override fun onNewToken(token: String) {
         Log.i("FCM", "Token renovado para el servicio legado")
+        CrashlyticsHelper.logEvent("fcm_token_renewed")
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        if(remoteMessage.notification != null){
+        try {
+            val data = remoteMessage.data
+            val notificationType = data["type"] ?: NotificationHelper.NotificationType.CHAT_MESSAGE
 
-            val senderUid = remoteMessage.data["senderUid"]
+            when (notificationType) {
+                NotificationHelper.NotificationType.CHAT_MESSAGE -> {
+                    handleChatNotification(remoteMessage)
+                }
+                NotificationHelper.NotificationType.NEW_ANUNCIO_CATEGORY -> {
+                    handleNewAnuncioNotification(data)
+                }
+                NotificationHelper.NotificationType.ANUNCIO_NO_RESPONSE -> {
+                    handleReminderNotification(data)
+                }
+                NotificationHelper.NotificationType.ANUNCIO_FAVORITE -> {
+                    handleFavoriteNotification(data)
+                }
+                NotificationHelper.NotificationType.SYSTEM_UPDATE -> {
+                    handleSystemNotification(data)
+                }
+                else -> {
+                    // Fallback a notificación básica
+                    handleChatNotification(remoteMessage)
+                }
+            }
+        } catch (e: Exception) {
+            CrashlyticsHelper.logError(e, "MyFcmService.onMessageReceived()")
+            Log.e("FCM", "Error procesando notificación: ${e.message}")
+        }
+    }
 
-            showNotification(
-                remoteMessage.notification?.title,
-                remoteMessage.notification?.body,
-                senderUid ?: "Desconocido",
+    private fun handleChatNotification(remoteMessage: RemoteMessage) {
+        if (remoteMessage.notification != null) {
+            val senderUid = remoteMessage.data["senderUid"] ?: "Desconocido"
+            val title = remoteMessage.notification?.title ?: "Nuevo mensaje"
+            val body = remoteMessage.notification?.body ?: ""
+
+            val notificationId = NotificationHelper.generarNotificationId(
+                NotificationHelper.NotificationType.CHAT_MESSAGE,
+                senderUid
             )
 
-        }else{
+            NotificationHelper.mostrarNotificacionChat(
+                context = this,
+                senderUid = senderUid,
+                senderName = title,
+                message = body,
+                notificationId = notificationId
+            )
+        } else {
             Log.d("FCM", "Mensaje sin notificación")
-
         }
-
     }
 
-    private fun showNotification(title: String?, body: String?, senderUid: String) {
-        val notificationId = Random().nextInt(3000)
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        configurarCanalNotification(notificationManager)
-        val intent = Intent(this, ChatActivity::class.java)
-        intent.putExtra("uidVendedor", senderUid)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+    private fun handleNewAnuncioNotification(data: Map<String, String>) {
+        val anuncioId = data["anuncioId"] ?: return
+        val titulo = data["titulo"] ?: "Nuevo anuncio"
+        val categoria = data["categoria"] ?: "General"
+        val precio = data["precio"] ?: ""
 
-        val notificationBuilder = NotificationCompat.Builder(this, "default_channel")
-            .setSmallIcon(R.drawable.icono_notificacion)
-            .setContentTitle(title ?: "Sin titulo")
-            .setContentText(body ?: "Sin contenido")
-            .setAutoCancel(true)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setContentIntent(pendingIntent)
+        val notificationId = NotificationHelper.generarNotificationId(
+            NotificationHelper.NotificationType.NEW_ANUNCIO_CATEGORY,
+            anuncioId
+        )
 
-        notificationManager.notify(notificationId, notificationBuilder.build())
+        NotificationHelper.mostrarNotificacionNuevoAnuncio(
+            context = this,
+            anuncioId = anuncioId,
+            titulo = titulo,
+            categoria = categoria,
+            precio = precio,
+            notificationId = notificationId
+        )
     }
 
-    private fun configurarCanalNotification(notificationManager: NotificationManager) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val notificationChannel = NotificationChannel(
-                "default_channel",
-                "Chat_Channel",
-                NotificationManager.IMPORTANCE_HIGH,
-            )
-            notificationChannel.description = "Show Chat Notifications"
-            notificationChannel.enableVibration(true)
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
+    private fun handleReminderNotification(data: Map<String, String>) {
+        val anuncioId = data["anuncioId"] ?: return
+        val titulo = data["titulo"] ?: "Tu anuncio"
+        val dias = data["dias"]?.toIntOrNull() ?: 3
+
+        val notificationId = NotificationHelper.generarNotificationId(
+            NotificationHelper.NotificationType.ANUNCIO_NO_RESPONSE,
+            anuncioId
+        )
+
+        NotificationHelper.mostrarNotificacionRecordatorio(
+            context = this,
+            anuncioId = anuncioId,
+            tituloAnuncio = titulo,
+            diasSinRespuesta = dias,
+            notificationId = notificationId
+        )
+    }
+
+    private fun handleFavoriteNotification(data: Map<String, String>) {
+        val anuncioId = data["anuncioId"] ?: return
+        val titulo = data["titulo"] ?: "Favorito"
+        val cambio = data["cambio"] ?: "actualizado"
+
+        val notificationId = NotificationHelper.generarNotificationId(
+            NotificationHelper.NotificationType.ANUNCIO_FAVORITE,
+            anuncioId
+        )
+
+        NotificationHelper.mostrarNotificacionFavorito(
+            context = this,
+            anuncioId = anuncioId,
+            titulo = titulo,
+            cambio = cambio,
+            notificationId = notificationId
+        )
+    }
+
+    private fun handleSystemNotification(data: Map<String, String>) {
+        val titulo = data["titulo"] ?: "Actualización del sistema"
+        val mensaje = data["mensaje"] ?: ""
+
+        val notificationId = NotificationHelper.generarNotificationId(
+            NotificationHelper.NotificationType.SYSTEM_UPDATE,
+            System.currentTimeMillis().toString()
+        )
+
+        NotificationHelper.mostrarNotificacionSistema(
+            context = this,
+            titulo = titulo,
+            mensaje = mensaje,
+            notificationId = notificationId
+        )
     }
 }
