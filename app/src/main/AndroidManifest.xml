@@ -99,6 +99,7 @@
         <activity android:name=".PedidosActivity" android:exported="false" />
         <activity android:name=".SeleccionarUbicacion" android:exported="false" />
         <activity android:name=".Anuncios.CrearAnuncio" android:exported="false" />
+        <activity android:name=".CategoriasFavoritasActivity" android:exported="false" />
         <activity android:name=".EditarPerfil" android:exported="false" />
         <activity android:name=".Registro_email" android:exported="false" />
         <activity android:name=".Opciones_login.Login_email" android:exported="false" />

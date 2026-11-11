@@ -72,14 +72,19 @@
   - `utils/NotificationHelper.kt`
   - `MainApplication.kt`
   - `Notificaciones/MyFcmService.kt`
+  - `CategoriasFavoritasActivity.kt` (NUEVO)
+  - `Adaptadores/AdaptadorCategoriaFavorita.kt` (NUEVO)
+  - `Modelo/ModeloCategoria.kt` (actualizado)
+  - `Anuncios/CrearAnuncio.kt` (precio anterior)
+  - `functions/index.js` (4 Cloud Functions)
+  - Layouts: `activity_categorias_favoritas.xml`, `item_categoria_favorita.xml`
 - **Features:**
   - 4 canales de notificación (Chat, Anuncios, Sistema, Marketing)
-  - Soporte para 6 tipos de notificación
-  - Deep links específicos por tipo
-  - Notificaciones de nuevos anuncios en categorías favoritas
-  - Recordatorios de anuncios sin respuesta
-  - Actualizaciones de favoritos
-  - IDs únicos para evitar duplicados
+  - 6 tipos de notificación con deep links
+  - UI para gestionar categorías favoritas
+  - Cloud Functions: onAnuncioCreated, checkAnunciosSinRespuesta (cron), onAnuncioUpdated
+  - Sistema completo de notificaciones automatizadas
+  - Guardado de precio anterior para comparación
   - Integración con Crashlytics
 
 ---

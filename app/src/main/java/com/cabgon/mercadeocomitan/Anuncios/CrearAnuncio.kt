@@ -58,6 +58,7 @@ class CrearAnuncio : AppCompatActivity() {
 
     private var edicion = false
     private var idAnuncioEditar = ""
+    private var precioAnterior = "" // Para notificaciones de cambio de precio
 
     private var marca = ""
     private var categoria = ""
@@ -338,6 +339,7 @@ class CrearAnuncio : AppCompatActivity() {
                     val condicionDb = snapshot.child("condicion").getValue(String::class.java).orEmpty()
                     val locacionDb = snapshot.child("direccion").getValue(String::class.java).orEmpty()
                     val precioDb = snapshot.child("precio").getValue(String::class.java).orEmpty()
+                    precioAnterior = precioDb // Guardar precio actual para comparar después
                     val marcaDb = snapshot.child("marca").getValue(String::class.java).orEmpty()
                     val descripcionDb = snapshot.child("descripcion").getValue(String::class.java).orEmpty()
                     latitud = (snapshot.child("latitud").value as? Number)?.toDouble() ?: 0.0
@@ -479,6 +481,7 @@ class CrearAnuncio : AppCompatActivity() {
             "condicion" to condicion,
             "direccion" to direccion,
             "precio" to precio,
+            "precioAnterior" to precioAnterior,
             "titulo" to titulo,
             "descripcion" to descripcion,
             "latitud" to latitud,
