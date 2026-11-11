@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estilo para nuestro circulo -->
+    <style name="ImageStyle_Circle">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+
+    </style>
+
+    <!-- Estilo para esquinas redondeadas -->
+    <style name="ImageStyle_Corners_Reounded">
+        <item name="cornerSize">10dp</item>
+        <item name="cornerFamily">rounded</item>
+
+    </style>
+
+    <style name="CircularImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Shape.Bubble.Image" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+
+
+</resources>

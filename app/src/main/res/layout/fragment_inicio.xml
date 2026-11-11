@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragmentos.FragmentInicio">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:id="@+id/homeMarketplaceHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mi_color"
+            android:orientation="vertical"
+            android:paddingBottom="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="54dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_circle_soft"
+                    android:contentDescription="@string/home_logo_description"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/logo_img"
+                    tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_brand_name"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="@string/home_brand_tagline"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="11sp"
+                        android:alpha="0.78" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardBackgroundColor="@color/md_theme_surface"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <EditText
+                        android:id="@+id/EtBuscar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="9dp"
+                        android:hint="@string/Et_buscar"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:autofillHints="none"
+                        android:importantForAutofill="no"
+                        android:maxLines="1"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="12dp"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:textColorHint="@color/gris_texto"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@drawable/ic_buscar" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <ImageButton
+                    android:id="@+id/IbLimpiar"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_icon_round"
+                    android:contentDescription="@string/home_clear_search"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_limpiar_busqueda"
+                    android:visibility="gone"
+                    app:tint="@color/brand_teal" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/categoriasTabsScroll"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:clipToPadding="false"
+                android:fillViewport="false"
+                android:contentDescription="@string/home_categories_accessibility"
+                android:importantForAccessibility="yes"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/categoriasTabsContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/adViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fondo2"
+            android:minHeight="1dp" />
+
+        <TextView
+            android:id="@+id/tvUbicacionAdvertencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_ubicacion_advertencia"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:padding="13dp"
+            android:textColor="@color/brand_navy"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/home_section_title"
+                android:textColor="@color/brand_navy"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_section_nearby"
+                android:textColor="@color/brand_teal"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:shimmer_auto_start="false"
+            app:shimmer_base_color="@color/skeleton_base"
+            app:shimmer_duration="1200"
+            app:shimmer_highlight_color="@color/skeleton_highlight">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:useDefaultMargins="true">
+
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+                <include layout="@layout/item_anuncio_skeleton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+            </GridLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/tvEstadoCatalogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/home_empty_catalog"
+            android:textColor="@color/gris_texto"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/anunciosRv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:layout_marginTop="4dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_anuncio_nueva_version" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

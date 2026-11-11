@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardPedido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/md_theme_surface"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="1dp"
+    app:contentPadding="16dp"
+    app:strokeColor="@color/md_theme_outlineVariant"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Fila superior: Rol + Estado + Fecha -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRolOrden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_blue"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/md_theme_onSecondaryContainer"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="Compra" />
+
+            <TextView
+                android:id="@+id/tvEstadoOrden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_chip_amber"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/md_theme_onTertiaryContainer"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="Solicitud enviada" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvFechaOrden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLines="1"
+                android:textColor="@color/gris_medio"
+                android:textSize="11sp"
+                tools:text="09/11/2026" />
+        </LinearLayout>
+
+        <!-- Fila central: Título del anuncio y Precio -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTituloOrden"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="2"
+                android:textColor="@color/brand_navy"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Bicicleta de montaña rodada 29" />
+
+            <TextView
+                android:id="@+id/tvPrecioOrden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:maxLines="1"
+                android:textColor="@color/brand_teal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="$2,500.00" />
+        </LinearLayout>
+
+        <!-- Detalles de pago y punto de encuentro / entrega -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/md_theme_surfaceContainerLow"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_pago"
+                    app:tint="@color/brand_teal" />
+
+                <TextView
+                    android:id="@+id/tvMetodoPagoOrden"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/gris_oscuro"
+                    android:textSize="13sp"
+                    tools:text="Contra entrega en Comitán" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDetalleEntregaOrden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_location_on"
+                    app:tint="@color/gris_texto" />
+
+                <TextView
+                    android:id="@+id/tvDetalleEntregaOrden"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/gris_texto"
+                    android:textSize="12sp"
+                    tools:text="Punto de encuentro: Parque Central" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Pie de tarjeta: estado/sugerencia + botón de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSugerenciaAccion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/gris_texto"
+                android:textSize="12sp"
+                tools:text="Requiere tu confirmación" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAbrirPedido"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="Abrir pedido"
+                android:textAllCaps="false"
+                android:textColor="@color/brand_teal"
+                android:textSize="13sp"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/brand_teal"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

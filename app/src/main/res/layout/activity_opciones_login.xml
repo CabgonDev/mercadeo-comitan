@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OpcionesLogin">
+
+    <!-- 🎨 Contenido principal -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/backgroundLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:gravity="center"
+        android:background="@drawable/fondo3">
+
+        <ImageView
+            android:src="@drawable/email"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Ingresar_email"
+            android:textAllCaps="true"
+            android:text="@string/Ingresar_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/m_button_height"
+            app:cornerRadius="8dp"
+            android:layout_marginBottom="20dp" />
+
+        <ImageView
+            android:src="@drawable/google"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Ingresar_google"
+            android:text="@string/Ingresar_google"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/m_button_height"
+            app:cornerRadius="8dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- 🌫️ Overlay de carga -->
+    <FrameLayout
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <View
+            android:id="@+id/blurBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#B3000000" /> <!-- Negro translúcido -->
+
+        <LinearLayout
+            android:id="@+id/loaderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/loadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cargando"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- 🌟 Logo de bienvenida -->
+            <ImageView
+                android:id="@+id/logoBienvenida"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/img_inicio"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:alpha="0"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

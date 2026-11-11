@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <queries>
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.whatsapp" />
+        <package android:name="com.whatsapp.w4b" />
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_mercadeo_comitan"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_mercadeo_comitan_round"
+        android:supportsRtl="true"
+        android:theme="@style/Base.Theme.MercadeoComitan">
+
+        <!-- Launcher único -->
+        <activity
+            android:name=".PantallaInicio"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity: interna, sin intent-filter -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- OpcionesLogin: interna, sin intent-filter -->
+        <activity
+            android:name=".OpcionesLogin"
+            android:exported="false" />
+
+        <!-- Chat con deep link (custom scheme). Sin autoVerify -->
+        <activity
+            android:name=".Chat.ChatActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="mercadeo"
+                    android:host="chat" />
+            </intent-filter>
+        </activity>
+
+        <!-- Otras activities internas -->
+        <activity android:name=".PanelAdminActivity" android:exported="false" />
+        <activity android:name=".Eliminar_cuenta" android:exported="false" />
+        <activity android:name=".CambiarPasword" android:exported="false" />
+        <activity android:name=".RecuperarPassword" android:exported="false" />
+        <activity android:name=".Comentarios" android:exported="false" />
+        <activity android:name=".DetalleVendedor.DetalleVendedor" android:exported="false" />
+        <activity android:name=".DetalleAnuncio.DetalleAnuncio" android:exported="false" />
+        <activity android:name=".PedidoActivity" android:exported="false" />
+        <activity android:name=".PedidosActivity" android:exported="false" />
+        <activity android:name=".SeleccionarUbicacion" android:exported="false" />
+        <activity android:name=".Anuncios.CrearAnuncio" android:exported="false" />
+        <activity android:name=".EditarPerfil" android:exported="false" />
+        <activity android:name=".Registro_email" android:exported="false" />
+        <activity android:name=".Opciones_login.Login_email" android:exported="false" />
+
+        <!-- Google APIs -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/mi_google_maps_api_key" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/id_ads" />
+
+        <!-- Servicio de FCM (Android 12+: exported requerido si hay intent-filter) -->
+        <service
+            android:name=".Chat.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

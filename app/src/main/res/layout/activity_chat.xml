@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?android:colorBackground"
+    tools:context=".Chat.ChatActivity">
+
+    <!-- APP BAR MODERNO (mismo id) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Toolbar simplificado sin flecha de regreso -->
+        <RelativeLayout
+            android:id="@+id/ToolbarRl"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/mi_color"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/toolbarIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                app:civ_border_width="0dp"/>
+
+            <TextView
+                android:id="@+id/Txt_nombre_vendedor_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/toolbarIv"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/Txt_nombre_vendedor_chat"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/Txt_estado_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Txt_nombre_vendedor_chat"
+                android:layout_alignStart="@id/Txt_nombre_vendedor_chat"
+                android:layout_marginTop="2dp"
+                android:text="@string/Txt_estado_chat"
+                android:textColor="#E6FFFFFF"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#22000000"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- LISTA DE MENSAJES (ahora sí puede referenciar appbar) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatsRv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_chat_derecho"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintBottom_toTopOf="@id/Rl_mensaje"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- BARRA INFERIOR DE MENSAJE (mismo id Rl_mensaje) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Rl_mensaje"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="20dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutMensaje"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/Et_mensaje_chat"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/enviarFAB"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Et_mensaje_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="4"
+                    android:minLines="1"
+                    android:overScrollMode="never"
+                    android:imeOptions="actionSend"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/adjuntarFAB"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/Et_mensaje_chat"
+                android:src="@drawable/ic_imagen_chat"
+                app:tint="@android:color/white"
+                android:backgroundTint="@color/mi_color"
+                app:fabCustomSize="48dp"
+                app:layout_constraintEnd_toStartOf="@id/enviarFAB"
+                app:layout_constraintBottom_toBottomOf="@id/enviarFAB"
+                app:layout_constraintTop_toTopOf="@id/enviarFAB"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/enviarFAB"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_enviar_chat"
+                app:tint="@android:color/white"
+                android:backgroundTint="@color/mi_color"
+                app:fabCustomSize="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

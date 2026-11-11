@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".Comentarios">
+
+    <LinearLayout
+        android:id="@+id/ToolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/mi_color"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp">
+
+        <RelativeLayout
+            android:id="@+id/toolbarContentRow"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:id="@+id/tvToolbarTituloComentarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/Txt_comentarios"
+                android:textColor="@color/brand_navy"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/resumenComentariosCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ToolbarRl"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/md_theme_surface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
+        app:contentPadding="16dp"
+        app:strokeColor="@color/md_theme_outlineVariant"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_detail_status"
+                    android:contentDescription="@string/comentarios_icono_descripcion"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_chats"
+                    app:tint="@color/brand_teal" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/comentarios_titulo_header"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/comentarios_descripcion"
+                        android:textColor="@color/gris_texto"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvConteoComentarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_teal"
+                    android:paddingStart="9dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="9dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/comentarios_contador_vacio"
+                    android:textColor="@color/md_theme_onPrimaryContainer"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Ib_agregar_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:contentDescription="@string/accion_agregar_comentario"
+                android:minHeight="50dp"
+                android:text="@string/comentarios_agregar_boton"
+                android:textAllCaps="false"
+                android:textColor="@color/md_theme_onPrimary"
+                android:textSize="15sp"
+                app:backgroundTint="@color/brand_teal"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ic_chats"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/md_theme_onPrimary" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Rv_comentarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/resumenComentariosCard"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="20dp"
+        android:scrollbars="none"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_comentario" />
+
+    <ProgressBar
+        android:id="@+id/progressComentarios"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/resumenComentariosCard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:indeterminateTint="@color/brand_teal"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/estadoVacioComentarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/resumenComentariosCard"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="34dp"
+        android:paddingEnd="34dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_detail_status"
+            android:contentDescription="@string/comentarios_icono_descripcion"
+            android:padding="16dp"
+            android:src="@drawable/ic_chats"
+            app:tint="@color/brand_teal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/comentarios_vacios_titulo"
+            android:textColor="@color/brand_navy"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/comentarios_vacios_descripcion"
+            android:textColor="@color/gris_texto"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/estadoErrorComentarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/resumenComentariosCard"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="34dp"
+        android:paddingEnd="34dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/comentarios_error_titulo"
+            android:textColor="@color/brand_navy"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/comentarios_error_descripcion"
+            android:textColor="@color/gris_texto"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReintentarComentarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/comentarios_reintentar"
+            android:textAllCaps="false"
+            android:textColor="@color/md_theme_onPrimary"
+            app:backgroundTint="@color/brand_teal"
+            app:cornerRadius="14dp" />
+    </LinearLayout>
+
+</RelativeLayout>

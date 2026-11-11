@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".DetalleVendedor.DetalleVendedor">
+
+    <LinearLayout
+        android:id="@+id/ToolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/mi_color"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="0dp">
+
+        <RelativeLayout
+            android:id="@+id/toolbarContentRow"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+        <TextView
+            android:id="@+id/tvToolbarTituloVendedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/Txt_perfil_vendedor"
+            android:textColor="@color/brand_navy"
+            android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/perfilMCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ToolbarRl"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/md_theme_surface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
+        app:contentPadding="16dp"
+        app:strokeColor="@color/md_theme_outlineVariant"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/Iv_vendedor"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:src="@drawable/img_perfil"
+                app:shapeAppearance="@style/ImageStyle_Circle" />
+
+            <TextView
+                android:id="@+id/Tv_nombres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="58dp"
+                android:layout_toEndOf="@id/Iv_vendedor"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/Tv_nombres"
+                android:textColor="@color/brand_navy"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Txt_miembro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Tv_nombres"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/Iv_vendedor"
+                android:text="@string/Txt_miembro"
+                android:textColor="@color/gris_texto"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/Tv_miembro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Tv_nombres"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/Txt_miembro"
+                android:text="@string/Tv_miembro"
+                android:textColor="@color/gris_texto"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvVendedorBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Txt_miembro"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/Iv_vendedor"
+                android:background="@drawable/bg_chip_teal"
+                android:paddingStart="9dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="9dp"
+                android:paddingBottom="4dp"
+                android:text="@string/vendedor_local"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Tv_calificacion_vendedor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvVendedorBadge"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@id/Iv_vendedor"
+                android:layout_toStartOf="@id/Iv_comentarios"
+                android:background="@drawable/bg_detail_status"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="@string/calificacion_vendedor_cargando"
+                android:textColor="@color/brand_teal"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/Iv_comentarios"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_favorite_button"
+                android:clickable="true"
+                android:contentDescription="@string/Txt_comentarios"
+                android:focusable="true"
+                android:padding="12dp"
+                android:src="@drawable/comentarios"
+                app:tint="@color/brand_teal" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/View02"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/perfilMCV"
+        android:layout_marginTop="4dp"
+        android:background="@color/md_theme_outlineVariant" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/resumenAnunciosCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/View02"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/md_theme_surface"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
+        app:contentPadding="14dp"
+        app:strokeColor="@color/md_theme_outlineVariant"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Txt_anuncios"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Txt_anuncios"
+                android:textColor="@color/brand_navy"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Tv_num_anuncios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_detail_status"
+                android:paddingStart="11dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="11dp"
+                android:paddingBottom="5dp"
+                android:text="@string/Tv_num_anuncios"
+                android:textColor="@color/brand_teal"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/anunciosRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/resumenAnunciosCard"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingStart="12dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="16dp"
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_anuncio_nueva_version" />
+
+</RelativeLayout>

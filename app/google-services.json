@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "950324992825",
+    "firebase_url": "https://mercadeo-comitan-1819c-default-rtdb.firebaseio.com",
+    "project_id": "mercadeo-comitan-1819c",
+    "storage_bucket": "mercadeo-comitan-1819c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950324992825:android:8b07da76e7864fdf09e6e8",
+        "android_client_info": {
+          "package_name": "com.cabgon.mercadeocomitan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950324992825-o80r1pvp81hegh6ndvs09mf4iauhf5es.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cabgon.mercadeocomitan",
+            "certificate_hash": "f4f92b61ececb747e16b801ccb813c2e3d938c4d"
+          }
+        },
+        {
+          "client_id": "950324992825-8k73675kcqbf7qquj7c5msm40o3hhdaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbI_pTEgNk5_ZbCWEPAFH27TUf6nYAYCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950324992825-8k73675kcqbf7qquj7c5msm40o3hhdaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7205378719919520~2084914576"
+    }
+  ],
+  "configuration_version": "1"
+}

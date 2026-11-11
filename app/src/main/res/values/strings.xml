@@ -1,0 +1,272 @@
+<resources>
+    <string name="progress_title">Por favor espere</string>
+
+    <string name="mi_google_maps_api_key">AIzaSyAV5OvLCZJOBZRSLMkMTz8lw8WZUovUVF8</string>
+
+    <string name="id_ads">ca-app-pub-7205378719919520~2084914576</string>
+
+    <string name="default_web_client_id">950324992825-8k73675kcqbf7qquj7c5msm40o3hhdaq.apps.googleusercontent.com</string>
+
+    <string name="Item_Inicio">Explorar</string>
+    <string name="Item_Chats">Mensajes</string>
+    <string name="Item_Vender">Publicar</string>
+    <string name="Item_Mis_Anuncios">Mis anuncios</string>
+    <string name="Item_Cuenta">Cuenta</string>
+
+    <string name="TituloRl">Mercadeo Comitán</string>
+
+    <string name="Cargando">Cargando...</string>
+    <string name="chat_cargando">Cargando…</string>
+    <string name="chat_usuario">Usuario</string>
+    <string name="chat_sin_mensajes">Sin mensajes</string>
+    <string name="chat_escribiendo">escribiendo</string>
+    <string name="chat_escribiendo_puntos">%1$s%2$s</string>
+    <string name="chat_imagen_enviada">📷 Imagen enviada</string>
+
+
+    <string name="Ingresar_email">Ingresar con email</string>
+    <string name="Ingresar_google">Ingresar con Google</string>
+
+    <string name="Txt_loging">Login de Usuario</string>
+    <string name="Et_email">Email</string>
+    <string name="Et_password">Contraseña</string>
+    <string name="Btn_login">Ingresar</string>
+    <string name="Txt_no_cuenta">¿No tienes una cuenta?</string>
+    <string name="Txt_registrarme">REGISTRARME</string>
+
+    <string name="Txt_registro">Registro de Usuario</string>
+    <string name="Et_r_password">Repetir Contraseña</string>
+    <string name="Btn_registrar">Registrar</string>
+
+    <!-- Perfil de Usuario -->
+    <string name="Txt_perfil">Perfil de Usuario</string>
+    <string name="Txt_informacion">Información:</string>
+    <string name="Txt_nombres">Nombre: </string>
+    <string name="Tv_nombres">Nombre Completo</string>
+    <string name="Txt_email">Email: </string>
+    <string name="Tv_email">email@dominio.com</string>
+    <string name="Txt_nacimiento">Fecha de nacimiento: </string>
+    <string name="Tv_nacimiento">DD/MM/AAAA</string>
+    <string name="Txt_miembro">Miembro desde: </string>
+    <string name="Tv_miembro">DD/MM/AAAA</string>
+    <string name="Txt_telefono">Teléfono: </string>
+    <string name="Tv_telefono">1234567890</string>
+    <string name="Txt_estado_cuenta">Estado de la Cuenta: </string>
+    <string name="Tv_estado_cuenta">No verificado</string>
+
+    <string name="Txtopciones">Opciones</string>
+    <string name="Btn_editar_perfil">Editar Perfil</string>
+    <string name="Btn_cambiar_pass">Cambiar Contraseña</string>
+    <string name="Btn_verificar_cuenta">Verificar cuenta</string>
+    <string name="Btn_eliminar_anuncios">Eliminar mis anuncios</string>
+    <string name="Btn_eliminar_cuenta">Eliminar cuenta</string>
+    <string name="Btn_cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Editar Perfil -->
+    <string name="Txt_editar_p">Editar Perfil</string>
+    <string name="Et_nombres">Nombre Completo</string>
+    <string name="Et_f_nac">Fecha de Nacimiento</string>
+    <string name="Cod_tel"> +00 </string>
+    <string name="Et_telefono">Teléfono</string>
+    <string name="Btn_actualizar">Actualizar</string>
+    <string name="editar_perfil_subtitulo">Mantén tus datos al día para que otros usuarios puedan reconocerte.</string>
+    <string name="editar_perfil_foto_descripcion">Foto de perfil</string>
+    <string name="editar_perfil_cambiar_foto">Cambiar foto de perfil</string>
+    <string name="editar_perfil_foto_ayuda">Usa una imagen clara para que puedan reconocerte.</string>
+    <string name="editar_perfil_datos_personales">Datos personales</string>
+    <string name="editar_perfil_abrir_calendario">Elegir fecha de nacimiento</string>
+    <string name="editar_perfil_codigo_pais">Código de país</string>
+    <string name="editar_perfil_camara">Cámara</string>
+    <string name="editar_perfil_galeria">Galería</string>
+    <string name="editar_perfil_error_sesion">Tu sesión expiró. Inicia sesión nuevamente.</string>
+    <string name="editar_perfil_error_nombre">Escribe un nombre válido de 2 a 60 caracteres.</string>
+    <string name="editar_perfil_error_fecha">Elige una fecha válida que no sea futura.</string>
+    <string name="editar_perfil_error_codigo">Selecciona un código de país.</string>
+    <string name="editar_perfil_error_telefono">Escribe un teléfono válido de 7 a 15 dígitos.</string>
+    <string name="editar_perfil_actualizando">Actualizando información</string>
+    <string name="editar_perfil_actualizado">Información actualizada</string>
+    <string name="editar_perfil_error_actualizar">No se pudo actualizar la información. Inténtalo de nuevo.</string>
+    <string name="editar_perfil_error_cargar">No se pudo cargar tu información. Inténtalo de nuevo.</string>
+    <string name="editar_perfil_subiendo_imagen">Subiendo imagen de perfil</string>
+    <string name="editar_perfil_actualizando_imagen">Actualizando imagen de perfil</string>
+    <string name="editar_perfil_imagen_actualizada">Tu imagen de perfil se actualizó.</string>
+    <string name="editar_perfil_imagen_invalida">Selecciona una imagen válida.</string>
+    <string name="editar_perfil_imagen_grande">La imagen debe pesar 5 MB o menos.</string>
+    <string name="editar_perfil_imagen_cancelada">Selección cancelada.</string>
+    <string name="editar_perfil_camara_error">No se pudo preparar la cámara.</string>
+    <string name="editar_perfil_permiso_camara">Se necesita permiso para usar la cámara.</string>
+    <string name="editar_perfil_foto_error">No se pudo actualizar la imagen. Inténtalo de nuevo.</string>
+
+    <!-- Crear Anuncio -->
+    <string name="Et_crear_anuncio">Crear Nuevo Anuncio</string>
+    <string name="Et_marca">Marca</string>
+    <string name="Categoria">Categoría</string>
+    <string name="Condicion">Condicion</string>
+    <string name="Locacion">Ubicación</string>
+    <string name="Et_precio">Precio</string>
+    <string name="Et_titulo">Titulo</string>
+    <string name="Et_descripcion">Descripción</string>
+    <string name="Btn_crear_anuncio">Crear Anuncio</string>
+    <string name="btn_guardar_cambios">Guardar cambios</string>
+    <string name="btn_publicar_anuncio">Publicar anuncio</string>
+    <string name="fotos_contador">%1$d de %2$d fotos</string>
+    <string name="anuncios_publicados_count">%1$d publicados</string>
+    <string name="version_instalada">Versión instalada: %1$s</string>
+
+    <!-- Mapas -->
+    <string name="Txt_selec_ubicacion">Seleccione Ubicación</string>
+    <string name="Btn_listo">Listo</string>
+
+    <!-- Fragmento Inicio -->
+    <string name="Tv_locacion">Elija una ubicación</string>
+    <string name="Et_buscar">Buscar productos, servicios o marcas</string>
+    <string name="home_brand_name">Mercadeo Comitán</string>
+    <string name="home_brand_tagline">Compra y vende cerca de ti</string>
+    <string name="home_logo_description">Logotipo de Mercadeo Comitán</string>
+    <string name="home_clear_search">Limpiar búsqueda</string>
+    <string name="home_section_title">Descubre en Comitán</string>
+    <string name="home_section_nearby">Cerca de ti</string>
+    <string name="home_categories_accessibility">Categorías disponibles. Desliza horizontalmente para explorar.</string>
+    <string name="Txt_categoria">Explora por categoría</string>
+    <string name="Tv_categoria">Categoría</string>
+
+    <!-- Item anuncio -->
+    <string name="Tv_titulo">Nombre del producto</string>
+    <string name="Tv_descripcion">Descripción del producto, se podra visualizar un maximo de 3 lineas</string>
+    <string name="Tv_direccion">Dirección del anuncio</string>
+    <string name="Tv_condicion">Nuevo</string>
+    <string name="Tv_simbolo_precio">$</string>
+    <string name="Tv_precio">00</string>
+    <string name="Tv_fecha">DD/MM/AAAA</string>
+
+    <string name="Txt_detalle_info">Detalles del anuncio</string>
+    <string name="toolbar_detalle_anuncio">Detalle del anuncio</string>
+    <string name="Tv_cat">Categoria del anuncio</string>
+    <string name="Txt_titulo">Título</string>
+    <string name="Txt_descripcion">Descripción</string>
+    <string name="Tv_descr">Descripción del anuncio</string>
+    <string name="Txt_direccion">Dirección</string>
+    <string name="Txt_vistas">Numero de vistas</string>
+    <string name="Tv_vistas">0</string>
+    <string name="Txt_descr_vendedor">Descripción del vendedor</string>
+    <string name="Txt_catego">Categoría</string>
+    <string name="Txt_estado">Estado</string>
+    <string name="Tv_estado">Disponible</string>
+
+    <!-- Opciones de detalle anuncio -->
+    <string name="Btn_mapa">Mapa</string>
+    <string name="Btn_llamar">Llam.</string>
+    <string name="Btn_sms">Whats</string>
+    <string name="Btn_chat">Chat</string>
+
+    <string name="imagenContadorTv">1/4</string>
+
+    <!-- CD eliminar imagen -->
+    <string name="Txt_eliminar">¿Estas segur@ que deseas eliminar esta imagen?</string>
+    <string name="Btn_si">Si</string>
+    <string name="Btn_no">Cancelar</string>
+
+    <!-- CD marcar vendido -->
+    <string name="Txt_marcar_vendido">¿Estas seguro que deseas marcar como vendido este anuncio?</string>
+    <string name="Btn_siM">Si</string>
+    <string name="Btn_noM">Cancelar</string>
+
+    <string name="Txt_perfil_vendedor">Perfil del Vendedor</string>
+    <string name="Txt_anuncios">Anuncios publicados:</string>
+    <string name="Tv_num_anuncios">0</string>
+    <string name="vendedor_local">Vendedor local</string>
+    <string name="calificacion_vendedor_cargando">Cargando calificación…</string>
+    <string name="calificacion_vendedor_sin_datos">Aún sin calificaciones</string>
+    <string name="calificacion_vendedor_no_disponible">Calificación no disponible</string>
+    <string name="calificacion_vendedor_resumen">★ %1$s · %2$d opiniones</string>
+
+    <string name="Txt_comentarios">Comentarios</string>
+    <string name="accion_ver_perfil_vendedor">Ver información del vendedor</string>
+    <string name="Txt_agregar">Agregar un comentario</string>
+
+    <string name="comentarios_titulo_header">Opiniones de la comunidad</string>
+    <string name="comentarios_descripcion">Conoce las experiencias de otras personas con este vendedor.</string>
+    <string name="comentarios_agregar_boton">Escribir un comentario</string>
+    <string name="comentarios_icono_descripcion">Opiniones del vendedor</string>
+    <string name="comentarios_contador_vacio">Sin comentarios</string>
+    <string name="comentarios_contador_uno">%1$d comentario</string>
+    <string name="comentarios_contador_varios">%1$d comentarios</string>
+    <string name="comentarios_vacios_titulo">Aún no hay comentarios</string>
+    <string name="comentarios_vacios_descripcion">Comparte tu experiencia para ayudar a la comunidad.</string>
+    <string name="comentarios_error_titulo">No pudimos cargar los comentarios</string>
+    <string name="comentarios_error_descripcion">Revisa tu conexión e inténtalo de nuevo.</string>
+    <string name="comentarios_reintentar">Reintentar</string>
+    <string name="comentarios_dialog_descripcion">Tu opinión ayuda a otros usuarios a decidir.</string>
+    <string name="comentarios_publicando">Publicando comentario</string>
+    <string name="comentarios_espera">Espera un momento…</string>
+    <string name="comentarios_publicado">Tu comentario se publicó correctamente.</string>
+    <string name="comentarios_uid_invalido">No se pudo identificar al vendedor.</string>
+    <string name="comentarios_sesion_requerida">Inicia sesión para publicar un comentario.</string>
+    <string name="comentarios_texto_vacio">Escribe un comentario antes de publicar.</string>
+    <string name="comentario_etiqueta">Opinión publicada</string>
+    <string name="comentarios_usuario_generico">Usuario de Mercadeo</string>
+    <string name="comentario_fecha_desconocida">Fecha no disponible</string>
+    <string name="comentarios_eliminar_titulo">Eliminar comentario</string>
+    <string name="comentarios_eliminar_mensaje">¿Quieres eliminar este comentario?</string>
+    <string name="comentarios_eliminar">Eliminar</string>
+    <string name="comentarios_cancelar">Cancelar</string>
+    <string name="comentarios_eliminado">El comentario se eliminó.</string>
+    <string name="comentarios_error_eliminar">No se pudo eliminar el comentario: %1$s</string>
+
+    <string name="Et_agregar_comentario">Escriba un comentario</string>
+    <string name="Btn_comentar">Comentar</string>
+
+    <string name="Tv_nombres_comentario">Nombres</string>
+    <string name="Tv_fecha_comentario">DD/MM/AAAA</string>
+    <string name="Tv_comentario">Comentario del usuario</string>
+
+    <string name="Txt_olvide_pass">He olvidado mi contraseña</string>
+    <string name="Tv_recuperar">Recuperar</string>
+    <string name="olvide_password">Olvidé mi contraseña</string>
+
+    <string name="Txt_instrucciones">¿Olvidó su contraseña? Ingrese su correo electrónico registrado.
+    Le enviaremos las instrucciones de recuperacion</string>
+    <string name="Btn_enviar_instrucciones">Enviar</string>
+
+    <string name="Txt_cambiar_pass">Cambiar contraseña</string>
+    <string name="Txt_instr_cambio_pass">Su nueva contraseña debe ser diferente a la actual</string>
+    <string name="Et_password_actual">Contraseña actual</string>
+    <string name="Et_password_nueva">Contraseña nueva</string>
+    <string name="Et_password_nueva_r">Confirme su nueva contraseña</string>
+    <string name="Btn_actualizar_pass">Actualizar</string>
+
+    <!-- Chats -->
+    <string name="Txt_nombre_vendedor_chat">Nombre del vendedor</string>
+    <string name="Txt_estado_chat">Online</string>
+    <string name="Et_mensaje_chat">Escriba su mensaje...</string>
+    <string name="Tv_tiempo_mensaje">DD/MM/AAAA HH:MM</string>
+    <string name="Btn_cerrar_visualizador">Cerrar</string>
+
+    <string name="Txt_eliminar_cuenta">Eliminar cuenta</string>
+    <string name="Txt_mensaje_eliminar">¿Estas segur@ que deseas eliminar PERMANENTEMENTE tu cuenta?</string>
+    <string name="Btn_eliminar_mi_cuenta">Eliminar mi cuenta</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Accesibilidad: controles solo con iconos -->
+    <string name="accion_volver">Volver</string>
+    <string name="accion_agregar_comentario">Agregar comentario</string>
+    <string name="accion_cerrar">Cerrar</string>
+    <string name="accion_favorito">Agregar o quitar de favoritos</string>
+    <string name="accion_ubicacion">Usar mi ubicación</string>
+    <string name="accion_editar">Editar anuncio</string>
+    <string name="accion_eliminar">Eliminar anuncio</string>
+    <string name="home_empty_catalog">Todavía no hay publicaciones para esta categoría o ubicación.</string>
+    <string name="home_empty_search">No encontramos anuncios con esa búsqueda. Prueba con otras palabras.</string>
+    <string name="registro_chip">CUENTA NUEVA</string>
+    <string name="registro_titulo_hero">Únete a Mercadeo Comitán</string>
+    <string name="registro_subtitulo_hero">Crea tu cuenta para explorar anuncios, guardar favoritos y contactar vendedores locales.</string>
+    <string name="registro_seccion_credenciales">Datos de acceso</string>
+    <string name="registro_ayuda_password">Usa una contraseña de al menos 6 caracteres para proteger tu cuenta.</string>
+    <string name="recuperar_chip">ACCESO SEGURO</string>
+    <string name="recuperar_titulo_hero">Recupera tu acceso</string>
+    <string name="recuperar_seccion_correo">Correo de recuperación</string>
+    <string name="recuperar_nota_seguridad">Revisa tu bandeja de entrada y la carpeta de correo no deseado después de enviar la solicitud.</string>
+    <string name="app_name">Mercadeo Comitan</string>
+</resources>

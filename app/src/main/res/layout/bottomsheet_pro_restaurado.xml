@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottomsheet_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compra restaurada ✅"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detectamos tu pago de publicación. Ya puedes publicar anuncios."
+        android:layout_marginTop="6dp"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listo"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

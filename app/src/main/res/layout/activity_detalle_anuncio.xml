@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".DetalleAnuncio.DetalleAnuncio">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/mi_color"
+        android:elevation="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:id="@+id/tvDetalleToolbarTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:includeFontPadding="true"
+            android:maxLines="1"
+            android:text="@string/toolbar_detalle_anuncio"
+            android:textColor="@color/brand_navy"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/Ib_eliminar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/accion_eliminar"
+            android:padding="11dp"
+            android:src="@drawable/ic_eliminar"
+            app:tint="@color/brand_navy"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/Ib_editar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="2dp"
+            android:layout_toStartOf="@id/Ib_eliminar"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/accion_editar"
+            android:padding="11dp"
+            android:src="@drawable/ic_editar"
+            app:tint="@color/brand_navy"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detalleScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRl"
+        android:layout_above="@id/Btn_comprar"
+        android:background="@color/fondo2"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="24dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/galeriaCard"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="false"
+                app:strokeColor="@color/md_theme_outlineVariant"
+                app:strokeWidth="1dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipChildren="true">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/imagenSliderVp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/md_theme_surfaceContainer" />
+
+                    <ImageButton
+                        android:id="@+id/Ib_fav"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/bg_favorite_button"
+                        android:contentDescription="@string/accion_favorito"
+                        android:padding="11dp"
+                        android:src="@drawable/ic_no_favorito"
+                        app:tint="@color/brand_navy" />
+
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/resumenCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:contentPadding="16dp"
+                app:strokeColor="@color/md_theme_outlineVariant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Tv_condicion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_detail_status"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="5dp"
+                            android:text="@string/Tv_estado"
+                            android:textColor="@color/brand_teal"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:id="@+id/Tv_vistasi"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="@string/Txt_vistas"
+                            android:src="@drawable/ic_visitas"
+                            app:tint="@color/gris_texto" />
+
+                        <TextView
+                            android:id="@+id/Tv_vistas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/Tv_vistas"
+                            android:textColor="@color/gris_texto"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/Tv_titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:maxLines="3"
+                        android:text="@string/Tv_titulo"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Tv_simbolo_precio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Tv_simbolo_precio"
+                            android:textColor="@color/brand_navy"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/Tv_precio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:text="@string/Tv_precio"
+                            android:textColor="@color/brand_navy"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/ad_view_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/md_theme_surfaceContainerLow" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/informacionCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:contentPadding="16dp"
+                app:strokeColor="@color/md_theme_outlineVariant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Txt_detalle_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Txt_detalle_info"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Txt_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/Txt_descripcion"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Tv_descr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/Tv_descr"
+                        android:textColor="@color/gris_oscuro"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/Txt_catego"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/Txt_catego"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Tv_cat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/Tv_cat"
+                        android:textColor="@color/gris_oscuro"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/Txt_estado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/Txt_estado"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Tv_estado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/Tv_estado"
+                        android:textColor="@color/gris_oscuro"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/Txt_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/Txt_direccion"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Tv_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/Tv_direccion"
+                        android:textColor="@color/gris_oscuro"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/Txt_descr_vendedor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/Txt_descr_vendedor"
+                android:textColor="@color/brand_navy"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/perfilVendedor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:contentPadding="14dp"
+                app:strokeColor="@color/md_theme_outlineVariant"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/Imgperfil"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/img_perfil"
+                        app:shapeAppearance="@style/ImageStyle_Circle" />
+
+                    <TextView
+                        android:id="@+id/Tv_nombres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/Imgperfil"
+                        android:text="@string/Tv_nombres"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Txt_miembro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Tv_nombres"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/Imgperfil"
+                        android:text="@string/Txt_miembro"
+                        android:textColor="@color/gris_texto"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/Tv_miembro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Tv_nombres"
+                        android:layout_marginStart="4dp"
+                        android:layout_toEndOf="@id/Txt_miembro"
+                        android:text="@string/Tv_miembro"
+                        android:textColor="@color/gris_texto"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/Tv_calificacion_vendedor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Tv_miembro"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@id/Imgperfil"
+                        android:text="Sin calificaciones"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/Iv_info_vendedor"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_favorite_button"
+                        android:clickable="true"
+                        android:contentDescription="@string/accion_ver_perfil_vendedor"
+                        android:focusable="true"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_ver_perfil_vendedor"
+                        app:tint="@color/brand_navy" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/OpcionesLl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Btn_mapa"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/Btn_mapa"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_op_locacion"
+                    app:iconGravity="textStart"
+                    app:iconPadding="3dp"
+                    app:strokeColor="@color/brand_teal"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Btn_llamar"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/Btn_llamar"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_op_llamar"
+                    app:iconGravity="textStart"
+                    app:iconPadding="3dp"
+                    app:strokeColor="@color/brand_teal"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Btn_sms"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/Btn_sms"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_whatsapp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="3dp"
+                    app:strokeColor="@color/brand_teal"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Btn_chat"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/Btn_chat"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_op_chat"
+                    app:iconGravity="textStart"
+                    app:iconPadding="3dp"
+                    app:strokeColor="@color/brand_teal"
+                    app:strokeWidth="1dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Btn_comprar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="8dp"
+        android:text="Comprar o reservar"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/brand_teal"
+        app:cornerRadius="16dp" />
+</RelativeLayout>
+

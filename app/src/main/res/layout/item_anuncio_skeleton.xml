@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="14dp"
+    android:layout_margin="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <!-- “Imagen” cuadrada: se adapta al ancho de la columna (ratio 1:1) -->
+        <View
+            android:id="@+id/sk_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_skeleton_rounded"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <!-- Título (simula ~80% del ancho con margenEnd) -->
+        <View
+            android:id="@+id/sk_title"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/bg_skeleton_rounded"
+            app:layout_constraintTop_toBottomOf="@id/sk_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Subtítulo (simula ~60% del ancho con mayor margenEnd) -->
+        <View
+            android:id="@+id/sk_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/bg_skeleton_rounded"
+            app:layout_constraintTop_toBottomOf="@id/sk_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- “Chip”/Precio -->
+        <View
+            android:id="@+id/sk_chip"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_skeleton_rounded"
+            app:layout_constraintTop_toBottomOf="@id/sk_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

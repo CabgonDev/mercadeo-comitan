@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Panel de administración"
+                android:textColor="@color/md_theme_onSurface"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- CARD MENSAJE GLOBAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_admin"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mensaje global actual"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/md_theme_onSurface"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvMensajeActual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_mensaje_actual"
+                android:padding="10dp"
+                android:textColor="@color/md_theme_onSurfaceVariant"
+                android:textSize="15sp"
+                android:text="Sin mensaje global" />
+
+            <Switch
+                android:id="@+id/swMensajeActivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mostrar al abrir la app"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/md_theme_onSurface" />
+
+            <EditText
+                android:id="@+id/etTituloMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Título del nuevo mensaje"
+                android:inputType="textCapSentences"
+                android:background="@drawable/bg_input_admin"
+                android:padding="10dp"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/etCuerpoMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:hint="Texto del nuevo mensaje"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:background="@drawable/bg_input_admin"
+                android:padding="10dp"
+                android:layout_marginTop="10dp" />
+
+            <ProgressBar
+                android:id="@+id/progressMsg"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:dividerPadding="6dp"
+                android:showDividers="none">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGuardarMensaje"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Guardar"
+                    android:textAllCaps="false"
+                    android:paddingHorizontal="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDesactivarMensaje"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Desactivar"
+                    android:textAllCaps="false"
+                    android:paddingHorizontal="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBorrarMensaje"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Borrar"
+                    android:textAllCaps="false"
+                    android:paddingHorizontal="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- OTRAS OPCIONES -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otras opciones"
+            android:textColor="@color/md_theme_onSurfaceVariant"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBloquearUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bloquear usuario"
+            app:icon="@drawable/ic_bloquear"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEliminarAnuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar anuncio"
+            app:icon="@drawable/ic_delete"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPublicarGratis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dar publicar gratis"
+            app:icon="@drawable/ic_gift"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHacerAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hacer ADMIN"
+            app:icon="@drawable/ic_admin"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.MercadeoComitan" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/mi_color</item>
+        <item name="colorOnPrimary">@color/brand_navy</item>
+        <item name="colorPrimaryContainer">@color/brand_yellow_container</item>
+        <item name="colorOnPrimaryContainer">@color/brand_navy</item>
+        <item name="colorSecondary">@color/brand_teal</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="colorTertiary">@color/brand_blue</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_outlineVariant</item>
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="android:navigationBarColor">@color/md_theme_surface</item>
+        <item name="android:statusBarColor">@color/mi_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/mi_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.MercadeoComitan</item>
+    </style>
+    <style name="Widget.MercadeoComitan.TextInputEditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/negro_oscuro</item>
+        <item name="android:textSize">15sp</item>
+        <item name="boxStrokeColor">@color/brand_teal</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="hintTextColor">@color/gris_texto</item>
+        <item name="android:textColorHint">@color/gris_texto</item>
+        <item name="endIconTint">@color/brand_teal</item>
+        <item name="startIconTint">@color/brand_teal</item>
+    </style>
+    <style name="Widget.MercadeoComitan.Dropdown" parent="Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense">
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/negro_oscuro</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

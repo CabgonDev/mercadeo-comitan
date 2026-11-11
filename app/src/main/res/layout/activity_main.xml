@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/ToolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/mi_color"
+        android:elevation="3dp"
+        android:paddingStart="20dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="0dp">
+
+        <TextView
+            android:id="@+id/TituloRl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:includeFontPadding="true"
+            android:ellipsize="end"
+            android:text="Mercadeo Comitán"
+            android:textColor="@color/brand_navy"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
+
+        <View
+            android:id="@+id/ToolbarDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mi_color_dark" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/FragmentL1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/View1"
+        android:layout_below="@id/ToolbarRl"
+        android:background="@color/fondo2" />
+
+    <View
+        android:id="@+id/View1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/BottomNV"
+        android:background="@color/md_theme_outlineVariant" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/BottomNV"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/md_theme_surface"
+        android:elevation="8dp"
+        app:itemIconTint="@color/nav_item_tint"
+        app:itemTextColor="@color/nav_item_tint"
+        app:itemRippleColor="@color/brand_yellow_container"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/mi_menu" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/FAB"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="78dp"
+        android:contentDescription="@string/Btn_crear_anuncio"
+        android:text="Publicar"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/brand_teal"
+        app:cornerRadius="18dp"
+        app:elevation="10dp"
+        app:icon="@drawable/ic_agregar"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:iconTint="@color/white"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp" />
+
+    <TextView
+        android:id="@+id/tvPermisosStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_permisos_status"
+        android:elevation="12dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="13dp"
+        android:text="Configurando permisos..."
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:alpha="0"
+        android:visibility="gone" />
+</RelativeLayout>
