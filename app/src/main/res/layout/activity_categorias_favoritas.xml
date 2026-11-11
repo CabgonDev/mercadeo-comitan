@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Selecciona las categorías de tu interés. Te notificaremos cuando haya nuevos anuncios en estas categorías."
-                    android:textColor="@color/gray_text"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="14sp" />
 
                 <TextView
@@ -103,7 +103,6 @@
         android:textAllCaps="false"
         android:textSize="16sp"
         app:cornerRadius="12dp"
-        app:icon="@drawable/ic_save"
         app:iconGravity="textStart" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
