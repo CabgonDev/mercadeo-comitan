@@ -49,7 +49,7 @@ Aplicación de marketplace local para compra y venta de productos en Comitán, C
 
 ## 🚀 Mejoras Recientes (v3.0.6)
 
-### ✅ 9 Optimizaciones Implementadas (47%)
+### ✅ 10 Optimizaciones Implementadas (53%)
 
 1. **ImageUtils** - Compresión automática (-90% tamaño)
 2. **ValidationUtils** - Validaciones centralizadas
@@ -60,6 +60,7 @@ Aplicación de marketplace local para compra y venta de productos en Comitán, C
 7. **AdaptadorOptimizado** - DiffUtil para RecyclerView
 8. **Paginación Real** - 30 inicial, 20 incremental (antes 120 de golpe)
 9. **Firebase Crashlytics** - Monitoreo automático de crashes
+10. **Notificaciones Push Mejoradas** - 4 canales, 6 tipos, categorías favoritas
 
 ### 📊 Resultados Medibles
 
