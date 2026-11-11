@@ -5,6 +5,7 @@ import com.cabgon.mercadeocomitan.Chat.ChatNotificationWatcher
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.FirebaseAppCheck
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class MainApplication : Application() {
 
@@ -19,6 +20,13 @@ class MainApplication : Application() {
         appCheck.installAppCheckProviderFactory(
             PlayIntegrityAppCheckProviderFactory.getInstance()
         )
+
+        // Inicializa Firebase Crashlytics
+        FirebaseCrashlytics.getInstance().apply {
+            setCrashlyticsCollectionEnabled(true)
+            // Logs personalizados para identificar usuario (opcional)
+            setUserId("user_${System.currentTimeMillis()}")
+        }
 
         // La presencia debe vivir a nivel de proceso para que cambiar entre
         // MainActivity y ChatActivity no marque al usuario como desconectado.

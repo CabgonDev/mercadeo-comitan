@@ -38,6 +38,7 @@ import kotlinx.coroutines.launch
 import com.cabgon.mercadeocomitan.utils.ImageUtils
 import com.cabgon.mercadeocomitan.utils.ValidationUtils
 import com.cabgon.mercadeocomitan.utils.MessageUtils
+import com.cabgon.mercadeocomitan.utils.CrashlyticsHelper
 
 class CrearAnuncio : AppCompatActivity() {
 
@@ -764,6 +765,7 @@ class CrearAnuncio : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 progressDialog.dismiss()
+                CrashlyticsHelper.logError(e, "CrearAnuncio.agregarImagenLocal()")
                 MessageUtils.showError(
                     binding.root,
                     "Error al procesar la imagen: ${e.message}"

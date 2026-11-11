@@ -44,6 +44,7 @@ import kotlinx.coroutines.launch
 import com.cabgon.mercadeocomitan.utils.NetworkUtils
 import com.cabgon.mercadeocomitan.utils.MessageUtils
 import com.cabgon.mercadeocomitan.utils.PreferencesManager
+import com.cabgon.mercadeocomitan.utils.CrashlyticsHelper
 
 class FragmentInicio : Fragment() {
 
@@ -656,6 +657,7 @@ class FragmentInicio : Fragment() {
                 contadorVistas = d["contadorVistas"]?.toString()?.toIntOrNull() ?: 0
             )
         } catch (e: Exception) {
+            CrashlyticsHelper.logError(e, "FragmentInicio.parseSnapshot()")
             Log.e("ParseAnuncio", "Error: ${e.message}")
             null
         }

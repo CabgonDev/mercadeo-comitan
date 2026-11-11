@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.googleService)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 kotlin {
@@ -94,6 +95,8 @@ dependencies {
     implementation(libs.firebaseStorage)
     implementation(libs.messaging)
     implementation(libs.firebase.appcheck.playintegrity)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 
     //noinspection LoginCredentials
     implementation(libs.androidx.credentials)

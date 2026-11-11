@@ -10,6 +10,7 @@ securityCrypto = "1.1.0"
 agp = "9.5.1"
 kotlinBom = "2.4.21"
 googleServices = "4.5.0"
+firebaseCrashlyticsPlugin = "3.0.2"
 
 # AndroidX / UI
 coreKtx = "1.19.1"
@@ -98,6 +99,8 @@ firebaseDatabase = { group = "com.google.firebase", name = "firebase-database" }
 firebaseStorage = { group = "com.google.firebase", name = "firebase-storage" }
 messaging = { group = "com.google.firebase", name = "firebase-messaging" }
 firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 
 # --- Glide
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -124,3 +127,4 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 googleService = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
