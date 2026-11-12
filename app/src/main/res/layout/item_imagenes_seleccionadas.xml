@@ -21,17 +21,24 @@
             android:scaleType="centerCrop"
             android:src="@drawable/item_imagen" />
 
-        <ImageButton
-            android:id="@+id/cerrar_item"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_gravity="top|end"
-            android:layout_margin="6dp"
-            android:background="@android:color/white"
-            android:contentDescription="Eliminar foto"
-            android:padding="6dp"
-            android:src="@drawable/cerrar"
-            android:elevation="4dp"
-            app:tint="@color/error_color" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <ImageButton
+                android:id="@+id/cerrar_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/cerrar"
+                android:contentDescription="Eliminar foto"
+                app:tint="#F44336" />
+        </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
 </com.google.android.material.card.MaterialCardView>

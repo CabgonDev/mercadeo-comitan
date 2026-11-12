@@ -578,46 +578,49 @@ class DetalleAnuncio : AppCompatActivity() {
     }
 
     private fun eliminarAnuncio() {
-        // Primero eliminar las imágenes de Storage
-        val storageRef = FirebaseStorage.getInstance().getReference("Anuncios").child(idAnuncio)
+        val db = FirebaseDatabase.getInstance().getReference("Anuncios").child(idAnuncio)
 
-        storageRef.listAll()
-            .addOnSuccessListener { listResult ->
-                // Eliminar cada imagen
-                val deleteImagesTasks = listResult.items.map { item ->
-                    item.delete()
+        // Primero obtener las IDs de las imágenes desde la base de datos
+        db.child("Imagenes").get()
+            .addOnSuccessListener { imagenesSnapshot ->
+                val deleteImagesTasks = mutableListOf<com.google.android.gms.tasks.Task<Void>>()
+
+                // Eliminar cada imagen de Storage
+                for (childSnapshot in imagenesSnapshot.children) {
+                    val imagenId = childSnapshot.key ?: continue
+                    val storageRef = FirebaseStorage.getInstance().getReference("Anuncios/$imagenId")
+                    deleteImagesTasks.add(storageRef.delete())
                 }
 
-                // Esperar a que se eliminen todas las imágenes
-                Tasks.whenAll(deleteImagesTasks)
-                    .addOnCompleteListener {
-                        // Luego eliminar el anuncio de la base de datos
-                        val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
-                        ref.child(idAnuncio)
-                            .removeValue()
-                            .addOnSuccessListener {
-                                startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
-                                finishAffinity()
-                                Toast.makeText(this, "Se eliminó el anuncio con éxito", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
-                            }
-                    }
+                // Esperar a que se eliminen todas las imágenes (o continuar si no hay)
+                if (deleteImagesTasks.isEmpty()) {
+                    // No hay imágenes, eliminar directamente el anuncio
+                    eliminarAnuncioDeDB()
+                } else {
+                    Tasks.whenAll(deleteImagesTasks)
+                        .addOnCompleteListener {
+                            // Luego eliminar el anuncio de la base de datos
+                            eliminarAnuncioDeDB()
+                        }
+                }
             }
             .addOnFailureListener {
-                // Si falla al listar las imágenes, igual eliminar el anuncio
-                val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
-                ref.child(idAnuncio)
-                    .removeValue()
-                    .addOnSuccessListener {
-                        startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
-                        finishAffinity()
-                        Toast.makeText(this, "Se eliminó el anuncio", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
-                    }
+                // Si falla al obtener las imágenes, igual eliminar el anuncio
+                eliminarAnuncioDeDB()
+            }
+    }
+
+    private fun eliminarAnuncioDeDB() {
+        val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
+        ref.child(idAnuncio)
+            .removeValue()
+            .addOnSuccessListener {
+                startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
+                finishAffinity()
+                Toast.makeText(this, "Se eliminó el anuncio con éxito", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
