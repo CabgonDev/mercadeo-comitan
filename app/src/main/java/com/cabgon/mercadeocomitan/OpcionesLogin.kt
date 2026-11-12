@@ -176,7 +176,7 @@ class OpcionesLogin : AppCompatActivity() {
                     firebaseAuth.signOut()
                     ocultarCargando()
                     Toast.makeText(this, "No se pudo completar el registro. Contacta a soporte.", Toast.LENGTH_SHORT).show()
-                    CrashlyticsHelper.logEvent("registro_bloqueado_sospechoso", "email: $email")
+                    android.util.Log.w("OpcionesLogin", "Registro bloqueado - email sospechoso: $email")
                     return@addOnSuccessListener
                 }
 
