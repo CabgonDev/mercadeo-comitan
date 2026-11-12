@@ -27,4 +27,14 @@
 -keep class com.cabgon.mercadeocomitan.Chat.MyFirebaseMessagingService { *; }
 -keepclassmembers class * extends com.google.firebase.messaging.FirebaseMessagingService { *; }
 
+# --- Google Maps ---
+-keep class com.google.android.gms.maps.** { *; }
+-keep interface com.google.android.gms.maps.** { *; }
+-keep class com.google.android.gms.location.** { *; }
+-dontwarn com.google.android.gms.maps.**
+
+# Mantener callbacks de Maps
+-keepclassmembers class * implements com.google.android.gms.maps.OnMapReadyCallback {
+    public void onMapReady(com.google.android.gms.maps.GoogleMap);
+}
 

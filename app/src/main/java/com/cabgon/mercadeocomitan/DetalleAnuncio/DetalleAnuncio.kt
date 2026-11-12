@@ -41,6 +41,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.android.gms.tasks.Tasks
 import java.util.Locale
 
 class DetalleAnuncio : AppCompatActivity() {
@@ -576,16 +578,46 @@ class DetalleAnuncio : AppCompatActivity() {
     }
 
     private fun eliminarAnuncio() {
-        val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
-        ref.child(idAnuncio)
-            .removeValue()
-            .addOnSuccessListener {
-                startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
-                finishAffinity()
-                Toast.makeText(this, "Se eliminó el anuncio con éxito", Toast.LENGTH_SHORT).show()
+        // Primero eliminar las imágenes de Storage
+        val storageRef = FirebaseStorage.getInstance().getReference("Anuncios").child(idAnuncio)
+
+        storageRef.listAll()
+            .addOnSuccessListener { listResult ->
+                // Eliminar cada imagen
+                val deleteImagesTasks = listResult.items.map { item ->
+                    item.delete()
+                }
+
+                // Esperar a que se eliminen todas las imágenes
+                Tasks.whenAll(deleteImagesTasks)
+                    .addOnCompleteListener {
+                        // Luego eliminar el anuncio de la base de datos
+                        val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
+                        ref.child(idAnuncio)
+                            .removeValue()
+                            .addOnSuccessListener {
+                                startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
+                                finishAffinity()
+                                Toast.makeText(this, "Se eliminó el anuncio con éxito", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    }
             }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener {
+                // Si falla al listar las imágenes, igual eliminar el anuncio
+                val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
+                ref.child(idAnuncio)
+                    .removeValue()
+                    .addOnSuccessListener {
+                        startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
+                        finishAffinity()
+                        Toast.makeText(this, "Se eliminó el anuncio", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+                    }
             }
     }
 

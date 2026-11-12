@@ -23,14 +23,15 @@
 
         <ImageButton
             android:id="@+id/cerrar_item"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|end"
-            android:layout_margin="4dp"
-            android:background="@drawable/bg_icon_round"
+            android:layout_margin="6dp"
+            android:background="@android:color/white"
             android:contentDescription="Eliminar foto"
-            android:padding="7dp"
+            android:padding="6dp"
             android:src="@drawable/cerrar"
+            android:elevation="4dp"
             app:tint="@color/error_color" />
     </FrameLayout>
 </com.google.android.material.card.MaterialCardView>

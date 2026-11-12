@@ -21,26 +21,29 @@ class MyFcmService : FirebaseMessagingService() {
 
         try {
             val data = remoteMessage.data
-            val notificationType = data["type"] ?: NotificationHelper.NotificationType.CHAT_MESSAGE
+            val notificationType = data["type"] ?: "chat_message"
+
+            Log.d("FCM", "Notification received: type=$notificationType, data=$data")
 
             when (notificationType) {
-                NotificationHelper.NotificationType.CHAT_MESSAGE -> {
+                "chat_message", NotificationHelper.NotificationType.CHAT_MESSAGE -> {
                     handleChatNotification(remoteMessage)
                 }
-                NotificationHelper.NotificationType.NEW_ANUNCIO_CATEGORY -> {
+                "new_anuncio_category", NotificationHelper.NotificationType.NEW_ANUNCIO_CATEGORY -> {
                     handleNewAnuncioNotification(data)
                 }
-                NotificationHelper.NotificationType.ANUNCIO_NO_RESPONSE -> {
+                "anuncio_no_response", NotificationHelper.NotificationType.ANUNCIO_NO_RESPONSE -> {
                     handleReminderNotification(data)
                 }
-                NotificationHelper.NotificationType.ANUNCIO_FAVORITE -> {
+                "anuncio_favorite_update", NotificationHelper.NotificationType.ANUNCIO_FAVORITE -> {
                     handleFavoriteNotification(data)
                 }
-                NotificationHelper.NotificationType.SYSTEM_UPDATE -> {
+                "system_update", NotificationHelper.NotificationType.SYSTEM_UPDATE -> {
                     handleSystemNotification(data)
                 }
                 else -> {
                     // Fallback a notificación básica
+                    Log.w("FCM", "Unknown notification type: $notificationType")
                     handleChatNotification(remoteMessage)
                 }
             }
