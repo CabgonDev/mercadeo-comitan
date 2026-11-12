@@ -150,7 +150,36 @@ class OpcionesLogin : AppCompatActivity() {
         }
         binding.loadingText.text = "Verificando tu cuenta..."
         firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
-            .addOnSuccessListener {
+            .addOnSuccessListener { authResult ->
+                val user = authResult.user
+
+                // 🚨 SEGURIDAD: Verificar que el email de Google esté verificado
+                if (user == null || user.email.isNullOrBlank()) {
+                    firebaseAuth.signOut()
+                    ocultarCargando()
+                    Toast.makeText(this, "No se pudo obtener información de la cuenta de Google", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+
+                // Google ya verifica los emails, pero agregar capa extra de seguridad
+                if (!user.isEmailVerified) {
+                    firebaseAuth.signOut()
+                    ocultarCargando()
+                    Toast.makeText(this, "Tu cuenta de Google debe tener el email verificado", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+
+                // 🚨 SEGURIDAD: Detectar patrones sospechosos de email
+                val email = user.email!!
+                if (esEmailSospechoso(email)) {
+                    // Registrar intento sospechoso
+                    firebaseAuth.signOut()
+                    ocultarCargando()
+                    Toast.makeText(this, "No se pudo completar el registro. Contacta a soporte.", Toast.LENGTH_SHORT).show()
+                    CrashlyticsHelper.logEvent("registro_bloqueado_sospechoso", "email: $email")
+                    return@addOnSuccessListener
+                }
+
                 // pasamos a crear/actualizar usuario
                 llenarInfoBD()
             }
@@ -158,6 +187,41 @@ class OpcionesLogin : AppCompatActivity() {
                 ocultarCargando()
                 Toast.makeText(this, "Error de autenticación: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    /**
+     * 🚨 SEGURIDAD: Detecta patrones de emails sospechosos usados por bots
+     */
+    private fun esEmailSospechoso(email: String): Boolean {
+        val emailLower = email.lowercase()
+
+        // Patrón 1: nombre.numero@gmail.com (ej: murieltodd.68760@gmail.com)
+        val patron1 = Regex("^[a-z]+\\.[0-9]{4,6}@gmail\\.com$")
+        if (patron1.matches(emailLower)) {
+            return true
+        }
+
+        // Patrón 2: nombreapellido.numerolargo@gmail.com
+        val patron2 = Regex("^[a-z]+[a-z]+\\.[0-9]{5,}@gmail\\.com$")
+        if (patron2.matches(emailLower)) {
+            return true
+        }
+
+        // Patrón 3: Más de 4 números consecutivos en el email
+        if (Regex("[0-9]{5,}").containsMatchIn(emailLower)) {
+            return true
+        }
+
+        // Patrón 4: Nombres comunes de bots
+        val nombresSospechosos = listOf(
+            "test", "demo", "sample", "fake", "bot", "spam",
+            "admin", "root", "support", "info", "noreply"
+        )
+        if (nombresSospechosos.any { emailLower.startsWith(it) }) {
+            return true
+        }
+
+        return false
     }
 
     // ==========================

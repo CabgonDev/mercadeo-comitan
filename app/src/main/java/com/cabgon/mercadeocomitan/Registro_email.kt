@@ -82,8 +82,22 @@ class Registro_email : AppCompatActivity() {
         progressDialog.setMessage("Creando cuenta")
         progressDialog.show()
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-            .addOnSuccessListener {
-                llenarInfoBD()
+            .addOnSuccessListener { authResult ->
+                // Enviar email de verificación ANTES de crear perfil
+                authResult.user?.sendEmailVerification()
+                    ?.addOnSuccessListener {
+                        llenarInfoBD()
+                    }
+                    ?.addOnFailureListener { e ->
+                        progressDialog.dismiss()
+                        Toast.makeText(
+                            this,
+                            "Cuenta creada pero no se pudo enviar email de verificación: ${e.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        // Aún así crear el perfil
+                        llenarInfoBD()
+                    }
             }
             .addOnFailureListener { e ->
                 progressDialog.dismiss()
