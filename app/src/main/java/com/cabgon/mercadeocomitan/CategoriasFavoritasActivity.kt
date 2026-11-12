@@ -39,7 +39,7 @@ class CategoriasFavoritasActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(0, 0, 0, 0)
             insets
         }
 
@@ -112,6 +112,16 @@ class CategoriasFavoritasActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     categoriasList.clear()
+
+                    if (!snapshot.exists()) {
+                        binding.progressBar.visibility = android.view.View.GONE
+                        MessageUtils.showError(
+                            binding.root,
+                            "No hay categorías disponibles. Contacta al administrador."
+                        )
+                        CrashlyticsHelper.logEvent("categorias_vacias", "No existen categorías en Database")
+                        return
+                    }
 
                     for (child in snapshot.children) {
                         val categoria = child.getValue(ModeloCategoria::class.java)
