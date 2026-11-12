@@ -107,9 +107,9 @@
        <!-- Agregar anuncio a favorito -->
         <ImageButton
             android:id="@+id/Ib_fav"
+            style="@style/Widget.MercadeoComitan.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:padding="10dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_no_favorito"

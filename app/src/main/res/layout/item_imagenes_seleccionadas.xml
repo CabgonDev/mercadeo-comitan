@@ -28,17 +28,17 @@
             android:layout_margin="8dp"
             app:cardCornerRadius="18dp"
             app:cardElevation="4dp"
-            app:cardBackgroundColor="@android:color/white">
+            app:cardBackgroundColor="#FFFFFF">
 
             <ImageButton
                 android:id="@+id/cerrar_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="8dp"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/cerrar"
-                android:contentDescription="Eliminar foto"
-                app:tint="#F44336" />
+                android:contentDescription="Eliminar foto" />
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
 </com.google.android.material.card.MaterialCardView>

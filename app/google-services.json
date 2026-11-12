@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "950324992825-d286kjnnmr42rqr4rq3c51ca4utri1cq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cabgon.mercadeocomitan",
+            "certificate_hash": "a35858071bdb6c5d709fdcc1e6d632a26691e9b8"
+          }
+        },
+        {
           "client_id": "950324992825-o80r1pvp81hegh6ndvs09mf4iauhf5es.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

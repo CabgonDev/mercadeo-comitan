@@ -180,7 +180,7 @@ class OpcionesLogin : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
 
-                // pasamos a crear/actualizar usuario
+                // ✅ TODO OK - pasamos a crear/actualizar usuario
                 llenarInfoBD()
             }
             .addOnFailureListener { e ->

@@ -20,8 +20,8 @@ android {
         applicationId = "com.cabgon.mercadeocomitan"
         minSdk = 24
         targetSdk = 37
-        versionCode = 309
-        versionName = "3.0.9"
+        versionCode = 312
+        versionName = "3.1.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,6 +45,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
             ndk {
                 debugSymbolLevel = "FULL"
             }

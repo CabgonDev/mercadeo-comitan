@@ -580,46 +580,69 @@ class DetalleAnuncio : AppCompatActivity() {
     private fun eliminarAnuncio() {
         val db = FirebaseDatabase.getInstance().getReference("Anuncios").child(idAnuncio)
 
+        android.util.Log.d("DetalleAnuncio", "🗑️ Iniciando eliminación de anuncio: $idAnuncio")
+
         // Primero obtener las IDs de las imágenes desde la base de datos
         db.child("Imagenes").get()
             .addOnSuccessListener { imagenesSnapshot ->
+                android.util.Log.d("DetalleAnuncio", "📸 Imágenes encontradas: ${imagenesSnapshot.childrenCount}")
+
                 val deleteImagesTasks = mutableListOf<com.google.android.gms.tasks.Task<Void>>()
 
                 // Eliminar cada imagen de Storage
                 for (childSnapshot in imagenesSnapshot.children) {
                     val imagenId = childSnapshot.key ?: continue
+                    val imagenData = childSnapshot.value
+                    android.util.Log.d("DetalleAnuncio", "🔍 Intentando borrar imagen: $imagenId, data: $imagenData")
+
                     val storageRef = FirebaseStorage.getInstance().getReference("Anuncios/$imagenId")
-                    deleteImagesTasks.add(storageRef.delete())
+                    val deleteTask = storageRef.delete()
+                        .addOnSuccessListener {
+                            android.util.Log.d("DetalleAnuncio", "✅ Imagen borrada: $imagenId")
+                        }
+                        .addOnFailureListener { e ->
+                            android.util.Log.e("DetalleAnuncio", "❌ Error borrando imagen $imagenId: ${e.message}")
+                        }
+                    deleteImagesTasks.add(deleteTask)
                 }
 
                 // Esperar a que se eliminen todas las imágenes (o continuar si no hay)
                 if (deleteImagesTasks.isEmpty()) {
-                    // No hay imágenes, eliminar directamente el anuncio
+                    android.util.Log.d("DetalleAnuncio", "⚠️ No hay imágenes para borrar")
                     eliminarAnuncioDeDB()
                 } else {
+                    android.util.Log.d("DetalleAnuncio", "⏳ Esperando a que se borren ${deleteImagesTasks.size} imágenes...")
                     Tasks.whenAll(deleteImagesTasks)
-                        .addOnCompleteListener {
-                            // Luego eliminar el anuncio de la base de datos
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                android.util.Log.d("DetalleAnuncio", "✅ Todas las imágenes borradas exitosamente")
+                            } else {
+                                android.util.Log.e("DetalleAnuncio", "⚠️ Algunas imágenes no se borraron: ${task.exception?.message}")
+                            }
                             eliminarAnuncioDeDB()
                         }
                 }
             }
-            .addOnFailureListener {
+            .addOnFailureListener { e ->
+                android.util.Log.e("DetalleAnuncio", "❌ Error obteniendo imágenes: ${e.message}")
                 // Si falla al obtener las imágenes, igual eliminar el anuncio
                 eliminarAnuncioDeDB()
             }
     }
 
     private fun eliminarAnuncioDeDB() {
+        android.util.Log.d("DetalleAnuncio", "🗑️ Eliminando anuncio de la base de datos")
         val ref = FirebaseDatabase.getInstance().getReference("Anuncios")
         ref.child(idAnuncio)
             .removeValue()
             .addOnSuccessListener {
+                android.util.Log.d("DetalleAnuncio", "✅ Anuncio eliminado de DB exitosamente")
                 startActivity(Intent(this@DetalleAnuncio, MainActivity::class.java))
                 finishAffinity()
                 Toast.makeText(this, "Se eliminó el anuncio con éxito", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
+                android.util.Log.e("DetalleAnuncio", "❌ Error eliminando anuncio de DB: ${e.message}")
                 Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
             }
     }

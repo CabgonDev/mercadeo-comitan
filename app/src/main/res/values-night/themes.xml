@@ -22,6 +22,15 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+
+    <!-- Estilo para ImageButton sin tint automático -->
+    <style name="Widget.MercadeoComitan.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="tint">@null</item>
+        <item name="android:tint">@null</item>
+        <item name="drawableTint">@null</item>
+    </style>
+
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/mi_color</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
