@@ -345,3 +345,123 @@ exports.onAnuncioUpdated = onValueCreated(
     return null;
   }
 );
+
+// ============================================
+// 🚨 SEGURIDAD: Detectar y bloquear cuentas sospechosas automáticamente
+// ============================================
+exports.detectSuspiciousAccounts = onValueCreated(
+  {
+    ref: "/Usuarios/{uid}",
+    region: "us-central1",
+    serviceAccount: "mercadeo-comitan-1819c@appspot.gserviceaccount.com",
+  },
+  async (event) => {
+    const snapshot = event.data;
+    const usuario = snapshot.val() || {};
+    const uid = event.params.uid;
+    const email = textoSeguro(usuario.email);
+
+    if (!email || !uid) {
+      return null;
+    }
+
+    const emailLower = email.toLowerCase();
+    let esSospechoso = false;
+    let razon = "";
+
+    // Patrón 1: nombre.numero@gmail.com (ej: murieltodd.68760@gmail.com)
+    if (/^[a-z]+\.[0-9]{4,6}@gmail\.com$/.test(emailLower)) {
+      esSospechoso = true;
+      razon = "Patrón nombre.numero@gmail.com";
+    }
+
+    // Patrón 2: nombreapellido.numerolargo@gmail.com
+    if (/^[a-z]+[a-z]+\.[0-9]{5,}@gmail\.com$/.test(emailLower)) {
+      esSospechoso = true;
+      razon = "Patrón nombre.numerolargo@gmail.com";
+    }
+
+    // Patrón 3: Más de 4 números consecutivos
+    if (/[0-9]{5,}/.test(emailLower)) {
+      esSospechoso = true;
+      razon = "Más de 4 números consecutivos";
+    }
+
+    // Patrón 4: Nombres sospechosos
+    const nombresSospechosos = ["test", "demo", "sample", "fake", "bot", "spam"];
+    if (nombresSospechosos.some(n => emailLower.startsWith(n))) {
+      esSospechoso = true;
+      razon = "Nombre sospechoso";
+    }
+
+    if (esSospechoso) {
+      console.warn(`🚨 Cuenta sospechosa detectada: ${email} (${razon})`);
+
+      // Bloquear cuenta en Database
+      await admin.database()
+        .ref(`Usuarios/${uid}`)
+        .update({
+          bloqueado: true,
+          canPost: false,
+          razonBloqueo: `Bot detectado: ${razon}`,
+          tiempoBloqueo: admin.database.ServerValue.TIMESTAMP,
+        });
+
+      // Deshabilitar cuenta en Authentication
+      try {
+        await admin.auth().updateUser(uid, {
+          disabled: true,
+        });
+        console.log(`✅ Cuenta ${email} bloqueada exitosamente`);
+      } catch (error) {
+        console.error(`Error al bloquear ${email}:`, error);
+      }
+    }
+
+    return null;
+  }
+);
+
+// ============================================
+// 🧹 LIMPIEZA: Eliminar cuentas no verificadas (Cron diario a las 3 AM)
+// ============================================
+exports.cleanupUnverifiedUsers = onSchedule(
+  {
+    schedule: "0 3 * * *",
+    timeZone: "America/Mexico_City",
+    region: "us-central1",
+  },
+  async () => {
+    const now = Date.now();
+    const cutoff = now - (24 * 60 * 60 * 1000);
+
+    try {
+      const listUsersResult = await admin.auth().listUsers(1000);
+      let deleted = 0;
+
+      for (const user of listUsersResult.users) {
+        const creationTime = new Date(user.metadata.creationTime).getTime();
+
+        if (!user.emailVerified &&
+            creationTime < cutoff &&
+            !user.providerData.some(p => p.providerId === 'google.com')) {
+
+          try {
+            await admin.auth().deleteUser(user.uid);
+            await admin.database().ref(`Usuarios/${user.uid}`).remove();
+            deleted++;
+            console.log(`🗑️ Usuario no verificado eliminado: ${user.email}`);
+          } catch (error) {
+            console.error(`Error al eliminar ${user.email}:`, error);
+          }
+        }
+      }
+
+      console.log(`✅ Limpieza completada: ${deleted} usuarios eliminados`);
+      return null;
+    } catch (error) {
+      console.error("Error en limpieza de usuarios:", error);
+      return null;
+    }
+  }
+);
