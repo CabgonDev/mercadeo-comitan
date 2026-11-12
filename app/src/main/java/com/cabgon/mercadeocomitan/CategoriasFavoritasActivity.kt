@@ -108,46 +108,26 @@ class CategoriasFavoritasActivity : AppCompatActivity() {
     }
 
     private fun cargarTodasLasCategorias() {
-        FirebaseDatabase.getInstance().getReference("Categorias")
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    categoriasList.clear()
+        binding.progressBar.visibility = android.view.View.GONE
+        categoriasList.clear()
 
-                    if (!snapshot.exists()) {
-                        binding.progressBar.visibility = android.view.View.GONE
-                        MessageUtils.showError(
-                            binding.root,
-                            "No hay categorías disponibles. Contacta al administrador."
-                        )
-                        CrashlyticsHelper.logEvent("categorias_vacias", "No existen categorías en Database")
-                        return
-                    }
+        // Cargar categorías desde Constantes (excepto "Todos")
+        for (i in 1 until Constantes.categorias.size) { // Empezar en 1 para saltar "Todos"
+            val nombreCategoria = Constantes.categorias[i]
+            val iconoCategoria = Constantes.categoriasIcono[i]
 
-                    for (child in snapshot.children) {
-                        val categoria = child.getValue(ModeloCategoria::class.java)
-                        if (categoria != null) {
-                            categoria.categoria = child.key ?: ""
-                            categoria.esFavorita = categoriasFavoritasActuales.contains(categoria.categoria)
-                            categoriasList.add(categoria)
-                        }
-                    }
+            val categoria = ModeloCategoria(
+                categoria = nombreCategoria,
+                icono = iconoCategoria,
+                esFavorita = categoriasFavoritasActuales.contains(nombreCategoria)
+            )
+            categoriasList.add(categoria)
+        }
 
-                    // Ordenar alfabéticamente
-                    categoriasList.sortBy { it.categoria }
+        // Ordenar alfabéticamente
+        categoriasList.sortBy { it.categoria }
 
-                    configurarRecyclerView()
-                    binding.progressBar.visibility = android.view.View.GONE
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    binding.progressBar.visibility = android.view.View.GONE
-                    MessageUtils.showError(binding.root, "Error al cargar categorías: ${error.message}")
-                    CrashlyticsHelper.logError(
-                        Exception(error.message),
-                        "CategoriasFavoritasActivity.cargarTodasLasCategorias()"
-                    )
-                }
-            })
+        configurarRecyclerView()
     }
 
     private fun configurarRecyclerView() {
